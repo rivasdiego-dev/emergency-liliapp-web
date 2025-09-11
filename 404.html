@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .loader {
+            text-align: center;
+            color: #2E8B85;
+        }
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2E8B85;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <p>Redirigiendo...</p>
+    </div>
+
+    <script>
+        // 🔧 EASY CONFIGURATION - CHANGE THESE SETTINGS AS NEEDED
+        const ROUTE_CONFIG = {
+            // Set to true to redirect ALL routes to root
+            // Set to false to handle routes individually
+            redirectAllToRoot: true,
+            
+            // When redirectAllToRoot is false, define specific routes here:
+            routes: {
+                '/doctor': '/',           // Redirect /doctor to root (for now)
+                '/login': '/',            // Redirect /login to root (for now)  
+                '/register': '/',         // Redirect /register to root (for now)
+                '/about': '/',            // Redirect /about to root (for now)
+                // Add more routes here as needed
+                // '/doctor': '/doctor.html',  // Example: redirect to actual page later
+            },
+            
+            // Default redirect when route is not found (and redirectAllToRoot is false)
+            defaultRedirect: '/',
+            
+            // Delay before redirect (in milliseconds) - 0 for instant
+            redirectDelay: 500
+        };
+
+        // 🚀 REDIRECT LOGIC - No need to change this part
+        function handleRedirect() {
+            const currentPath = window.location.pathname;
+            let redirectTo;
+
+            if (ROUTE_CONFIG.redirectAllToRoot) {
+                // Simple: redirect everything to root
+                redirectTo = '/';
+                console.log(`Redirecting ${currentPath} → ${redirectTo} (redirect all mode)`);
+            } else {
+                // Advanced: check specific routes
+                redirectTo = ROUTE_CONFIG.routes[currentPath] || ROUTE_CONFIG.defaultRedirect;
+                console.log(`Redirecting ${currentPath} → ${redirectTo} (specific route mode)`);
+            }
+
+            // Perform the redirect
+            setTimeout(() => {
+                window.location.replace(redirectTo);
+            }, ROUTE_CONFIG.redirectDelay);
+        }
+
+        // Execute redirect when page loads
+        handleRedirect();
+
+        // 📝 USAGE INSTRUCTIONS (visible in browser console):
+        console.log(`
+🔧 LiLi App Route Handler Configuration:
+
+CURRENT SETTINGS:
+- Redirect all to root: ${ROUTE_CONFIG.redirectAllToRoot}
+- Redirect delay: ${ROUTE_CONFIG.redirectDelay}ms
+
+TO CHANGE BEHAVIOR LATER:
+1. Set redirectAllToRoot to false
+2. Define specific routes in the 'routes' object
+3. Update redirectDelay if needed
+
+EXAMPLES:
+- Keep maintenance mode: redirectAllToRoot = true
+- Enable specific pages: redirectAllToRoot = false, then add routes
+- Instant redirects: redirectDelay = 0
+        `);
+    </script>
+</body>
+</html>
