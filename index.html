@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiLi App - En Mantenimiento</title>
+    <title>LiLi App</title>
     <style>
         * {
             margin: 0;
@@ -36,16 +36,19 @@
         .logo {
             width: 80px;
             height: 80px;
-            background: #4ECDC4;
             border-radius: 50%;
             margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
             box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         h1 {
@@ -72,6 +75,49 @@
         .rocket {
             color: #4ECDC4;
             font-size: 1.1em;
+        }
+
+        .features {
+            margin-bottom: 3rem;
+        }
+
+        .features h2 {
+            font-size: 1.4rem;
+            color: #2C3E50;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(78, 205, 196, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid #4ECDC4;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #5A6C7D;
+            line-height: 1.5;
         }
 
         .buttons {
@@ -132,8 +178,23 @@
                 font-size: 2rem;
             }
 
-            p {
-                font-size: 1.1rem;
+            .features h2 {
+                font-size: 1.2rem;
+            }
+
+            .feature-list {
+                text-align: center;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .feature-item p {
+                font-size: 1rem;
             }
 
             .buttons {
@@ -160,14 +221,32 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">Li</div>
+        <div class="logo">
+            <img src="public/logo.png" alt="LiLi App Logo">
+        </div>
         
-        <h1>Tu salud, nuestra prioridad <span class="heart">💙</span></h1>
+        <h1>La salud, como debe ser <span class="heart">💙</span></h1>
         
-        <p>
-            Estamos trabajando en mejoras increíbles para ti.<br>
-            Muy pronto descubrirás una nueva experiencia con LiLi App. <span class="rocket">🚀</span>
-        </p>
+        <div class="features">
+            <h2>Gana tiempo y simplifica tu consulta</h2>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="feature-icon">📅</span>
+                    <p>Agenda inteligente y confirmaciones automáticas de citas.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">📋</span>
+                    <p>Historial clínico de cada paciente en un solo lugar.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">💊</span>
+                    <p>Recetas electrónicas listas para firmar y enviar.</p>
+                </div>
+            </div>
+        </div>
         
         <div class="buttons">
           <a href="https://liliapp-doctor.vercel.app/signin">
